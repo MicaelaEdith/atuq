@@ -4,15 +4,40 @@ using UnityEngine;
 
 public class Star : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int starType;
+    public int points;
+
+    public void Initialize(int type, Sprite sprite, Vector3 position)
     {
-        
+        starType = type;
+
+        switch (starType)
+        {
+            case 0:
+                points = 1;
+                break;
+            case 1:
+                points = 6;
+                break;
+            case 2:
+                points = Random.Range(-4, 12);
+                break;
+            default:
+                Debug.LogWarning("Tipo de estrella no válido.");
+                points = 0;
+                break;
+        }
+
+        ChangeAppearance(sprite);
+        transform.position = position;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ChangeAppearance(Sprite sprite)
     {
-        
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null && sprite != null)
+        {
+            spriteRenderer.sprite = sprite;
+        }
     }
 }
