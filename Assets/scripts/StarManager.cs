@@ -22,8 +22,8 @@ public class StarManager : MonoBehaviour
     {
         ShuffleList(starPositions);
 
-        int starsOfType0 = 11;
-        int starsOfType1 = 14;
+        int starsOfType0 = 17;
+        int starsOfType1 = 13;
         int starsOfType2 = 8;
 
         int positionIndex = 0;
@@ -49,14 +49,8 @@ public class StarManager : MonoBehaviour
         GameObject starObject = Instantiate(starPrefab);
 
         Star star = starObject.GetComponent<Star>();
-        if (star != null)
-        {
-            star.Initialize(type, sprite, position);
-        }
-        else
-        {
-            Debug.LogError("El prefab no tiene el componente Star.");
-        }
+        star.Initialize(type, sprite, position);
+
     }
 
     private void ShuffleList<T>(List<T> list)
